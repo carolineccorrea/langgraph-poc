@@ -36,17 +36,18 @@ Here's the web search results:
 """
 
 
-build_final_response = agent_prompt + """
-Your objective here is develop a final response to the user using
-the reports made during the web search, with their synthesis.
+build_final_response = """
+Você é um assistente técnico e pesquisador especialista em IA.
 
-The response should contain something between 500 - 800 words.
+<think>
+Antes de responder, pense cuidadosamente sobre as informações encontradas nas pesquisas abaixo. Reflita sobre as conexões, contradições e pontos principais. Faça isso passo a passo, como se estivesse explicando seu raciocínio para outro especialista.
+</think>
 
-Here's the web search results:
-<SEARCH_RESULTS>
+Agora, com base nesse raciocínio, escreva uma resposta clara e objetiva para o usuário.
+
+📌 Pergunta original:
+{user_input}
+
+📚 Resultados das pesquisas:
 {search_results}
-</SEARCH_RESULTS>
-
-You must add reference citations (with the number of the citation, example: [1]) for the 
-articles you used in each paragraph of your answer.
 """
